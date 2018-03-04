@@ -28,7 +28,7 @@ def roi_10(img, p):
     top_left=(p[2][0],p[2*2+0][1])
     bottom_right = (p[2*2+1][0],int((p[0*2+0][1]+p[2*2+1][1])/2))
     cv2.rectangle(img,top_left, bottom_right,(255,155,0),8)
-    cv2.imwrite("{0}_10.jpg".format(IMAGE_USER),img)
+    cv2.imwrite("{0}_roi_10.jpg".format(IMAGE_USER),img)
     out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
     cv2.imwrite("{0}_roi_10_out.jpg".format(IMAGE_USER),out)
     
@@ -37,7 +37,7 @@ def roi_9(img, p):
     top_left=(p[2][0],p[2*2+0][1])
     bottom_right = (p[3*2+1][0],int(p[0*2+0][1]+(-p[0*2+0][1]+p[2*2+1][1])*0.3))
     cv2.rectangle(img,top_left, bottom_right,(55,55,55),3)
-    cv2.imwrite("{0}_9.jpg".format(IMAGE_USER),img)
+    cv2.imwrite("{0}_roi_9.jpg".format(IMAGE_USER),img)
     out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
     cv2.imwrite("{0}_roi_9_out.jpg".format(IMAGE_USER),out)
 def roi_7(img, p):
@@ -45,7 +45,7 @@ def roi_7(img, p):
     top_left=(p[2*2+1][0],p[2*2+1][1])
     bottom_right = (p[3*2+0][0],p[0*2+0][1])
     cv2.rectangle(img,top_left, bottom_right,(0,55,255),3)
-    cv2.imwrite("{0}_7.jpg".format(IMAGE_USER),img)
+    cv2.imwrite("{0}_roi_7.jpg".format(IMAGE_USER),img)
     out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
     cv2.imwrite("{0}_7_out.jpg".format(IMAGE_USER),out)
 img = cv2.imread('{0}_contour.jpg'.format(IMAGE_USER))

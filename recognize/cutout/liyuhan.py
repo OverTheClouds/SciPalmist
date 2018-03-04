@@ -120,7 +120,7 @@ class Predeal:
 
 
 if __name__ == '__main__':
-    IMGPATH = './hand.jpg'
+    IMGPATH = '../image/lihao.jpg'
     # IMGPATH ='/Users/liyuhan/Desktop/1.jpg'
     t = Predeal()
     t.preALLDeal(IMGPATH)
