@@ -13,27 +13,40 @@ def calK(p0,p1):
     print("asdfasdfsdfasdfasdfas")
     return k
 def roi_main(img,points):
+    img = img.copy()
     top_left=(points[0][0],points[4][1])
     bottom_right = (points[7][0]+(points[6][0]-points[5][0]), int(points[0][1]-(points[5][1]-points[0][1])*1.2))
     cv2.rectangle(img,top_left, bottom_right,(255,255,0),3)
     cv2.imwrite("roi_main.jpg",img)
+    out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
+    cv2.imwrite("roi_main_out.jpg",out)
 def roi_10(img, p):
+    img = img.copy()
     top_left=(p[2][0],p[2*2+0][1])
     bottom_right = (p[2*2+1][0],int((p[0*2+0][1]+p[2*2+1][1])/2))
     cv2.rectangle(img,top_left, bottom_right,(255,155,0),8)
     cv2.imwrite("roi_10.jpg",img)
+    out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
+    cv2.imwrite("roi_10_out.jpg",out)
     
 def roi_9(img, p):
+    img = img.copy()
     top_left=(p[2][0],p[2*2+0][1])
     bottom_right = (p[3*2+1][0],int(p[0*2+0][1]+(-p[0*2+0][1]+p[2*2+1][1])*0.3))
     cv2.rectangle(img,top_left, bottom_right,(55,55,55),3)
     cv2.imwrite("roi_9.jpg",img)
+    out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
+    cv2.imwrite("roi_9_out.jpg",out)
 def roi_7(img, p):
+    img = img.copy()
     top_left=(p[2*2+1][0],p[2*2+1][1])
     bottom_right = (p[3*2+0][0],p[0*2+0][1])
     cv2.rectangle(img,top_left, bottom_right,(0,55,255),3)
     cv2.imwrite("roi_7.jpg",img)
+    out = img[top_left[1]:bottom_right[1],top_left[0]:bottom_right[0],:]
+    cv2.imwrite("roi_7_out.jpg",out)
 img = cv2.imread('contour.jpg')
+src = cv2.imread('cutout.jpg')
 img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 ret, thresh = cv2.threshold(img_gray, 127, 255,0)
 imt,contours,hierarchy = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
@@ -63,8 +76,12 @@ for i in range(4):
     cv2.imwrite("{0}.jpg".format(i), img)
 points = sorted(points, key=lambda x:x[0])
 print(points)
-roi_main(img,points)
-roi_10(img,points)
-roi_9(img,points)
-roi_7(img,points)
+#roi_main(img,points)
+#roi_10(img,points)
+#roi_9(img,points)
+#roi_7(img,points)
+roi_main(src,points)
+roi_10(src,points)
+roi_9(src,points)
+roi_7(src,points)
 
