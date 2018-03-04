@@ -101,7 +101,7 @@ def process_image(img):
     p2 = (int(right), int(bottom))
     #cv2.rectangle(original, p1, p2, (77, 255, 9), 1, 1)
     final_img = final_img[int(top):int(bottom),int(left):int(right)]
-    cv2.imshow('palm image', original)
+   # cv2.imshow('palm image', original)
     cv2.imwrite('cutout.jpg',original)
     return final_img
 
@@ -109,17 +109,18 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('-i', '--image', help='Supply image to the program')
     args = vars(ap.parse_args())
+    print(args)
 
-    CORRECTION_NEEDED, IMAGE_FILE = False, './hand.jpg'
+    CORRECTION_NEEDED, IMAGE_FILE = False, './yangxuanyue.jpg'
 
     if args.get('image'): IMAGE_FILE = args.get('image')
 
     # Read image
     img = cv2.imread(IMAGE_FILE)
     final_image = process_image(img)
-    cv2.imshow('output', final_image)
-    cv2.imwrite('hand1.jpg',final_image)
-    cv2.waitKey(0)
+    #cv2.imshow('output', final_image)
+    #cv2.imwrite('hand1.jpg',final_image)
+    #cv2.waitKey(0)
 
 if __name__ == '__main__':
     main()

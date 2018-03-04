@@ -10,7 +10,6 @@ def calK(p0,p1):
         return 0
     k = (p1[1]-p0[1])/(p1[0]-p0[0])
     print(k)
-    print("asdfasdfsdfasdfasdfas")
     return k
 def roi_main(img,points):
     img = img.copy()
